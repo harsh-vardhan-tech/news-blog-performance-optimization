@@ -103,3 +103,4 @@ export const ConnectivityBar: React.FC<ConnectivityBarProps> = React.memo(({
 });
 
 ConnectivityBar.displayName = 'ConnectivityBar';
+
