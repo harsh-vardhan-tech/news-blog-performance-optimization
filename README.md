@@ -1,7 +1,8 @@
 # Performance Optimization Hub — News Blog
 **Ticket ID**: `ENG-84718` | **Epic**: Core Infrastructure Overhaul | **Priority**: P1 (High)  
 **Primary Owner**: Harsh Vardhan `[PDIT-INT-1260]`  
-**Assigned By**: Deepika Kumari (Tech Lead) | **Reporter**: Amit Sharma (Senior Staff Engineer)
+**Assigned By**: Deepika Kumari (Tech Lead) | **Reporter**: Amit Sharma (Senior Staff Engineer)  
+**Repository**: [github.com/harsh-vardhan-tech/news-blog-performance-optimization](https://github.com/harsh-vardhan-tech/news-blog-performance-optimization)
 
 ---
 
