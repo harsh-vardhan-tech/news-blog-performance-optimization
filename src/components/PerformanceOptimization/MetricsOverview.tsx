@@ -31,7 +31,6 @@ export const MetricsOverview: React.FC<MetricsOverviewProps> = React.memo(({
       aria-label="Core Performance Key Metrics"
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
     >
-      {/* Metric Card 1: Average TTFB */}
       <div className="bg-white border border-zinc-200 p-4 shadow-xs">
         <div className="flex items-center justify-between pb-2">
           <span className="text-xs font-semibold tracking-wider uppercase text-zinc-500">
@@ -50,7 +49,6 @@ export const MetricsOverview: React.FC<MetricsOverviewProps> = React.memo(({
         </div>
       </div>
 
-      {/* Metric Card 2: Average LCP */}
       <div className="bg-white border border-zinc-200 p-4 shadow-xs">
         <div className="flex items-center justify-between pb-2">
           <span className="text-xs font-semibold tracking-wider uppercase text-zinc-500">
@@ -69,7 +67,6 @@ export const MetricsOverview: React.FC<MetricsOverviewProps> = React.memo(({
         </div>
       </div>
 
-      {/* Metric Card 3: CDN Edge Hit Rate */}
       <div className="bg-white border border-zinc-200 p-4 shadow-xs">
         <div className="flex items-center justify-between pb-2">
           <span className="text-xs font-semibold tracking-wider uppercase text-zinc-500">
@@ -88,7 +85,6 @@ export const MetricsOverview: React.FC<MetricsOverviewProps> = React.memo(({
         </div>
       </div>
 
-      {/* Metric Card 4: Total Payload Tracked */}
       <div className="bg-white border border-zinc-200 p-4 shadow-xs">
         <div className="flex items-center justify-between pb-2">
           <span className="text-xs font-semibold tracking-wider uppercase text-zinc-500">
@@ -109,4 +105,3 @@ export const MetricsOverview: React.FC<MetricsOverviewProps> = React.memo(({
 });
 
 MetricsOverview.displayName = 'MetricsOverview';
-

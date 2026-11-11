@@ -57,7 +57,6 @@ export const PerformanceTable: React.FC<PerformanceTableProps> = React.memo(({
                 key={item.id}
                 className="hover:bg-zinc-50 transition-colors focus-within:bg-zinc-50"
               >
-                {/* Article Title and Slug */}
                 <td className="p-4 max-w-xs sm:max-w-md">
                   <div className="font-semibold text-zinc-900 line-clamp-1">
                     {item.title}
@@ -72,14 +71,12 @@ export const PerformanceTable: React.FC<PerformanceTableProps> = React.memo(({
                   )}
                 </td>
 
-                {/* Category */}
                 <td className="p-4 whitespace-nowrap">
                   <span className="inline-block px-2 py-0.5 text-xs font-medium border border-zinc-300 text-zinc-700 bg-zinc-50">
                     {item.category}
                   </span>
                 </td>
 
-                {/* TTFB */}
                 <td className="p-4 text-right whitespace-nowrap font-mono">
                   <span
                     className={`font-medium ${
@@ -92,7 +89,6 @@ export const PerformanceTable: React.FC<PerformanceTableProps> = React.memo(({
                   </span>
                 </td>
 
-                {/* LCP */}
                 <td className="p-4 text-right whitespace-nowrap font-mono">
                   <span
                     className={`font-medium ${
@@ -105,17 +101,14 @@ export const PerformanceTable: React.FC<PerformanceTableProps> = React.memo(({
                   </span>
                 </td>
 
-                {/* Payload */}
                 <td className="p-4 text-right whitespace-nowrap font-mono text-zinc-700">
                   {item.pageSizeKb} KB
                 </td>
 
-                {/* CDN Edge Hit */}
                 <td className="p-4 text-right whitespace-nowrap font-mono text-zinc-700">
                   {item.edgeCacheHitRate.toFixed(1)}%
                 </td>
 
-                {/* Status Badge */}
                 <td className="p-4 text-center whitespace-nowrap">
                   {item.status === 'Optimized' && (
                     <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider bg-black text-white">
@@ -141,7 +134,6 @@ export const PerformanceTable: React.FC<PerformanceTableProps> = React.memo(({
                   )}
                 </td>
 
-                {/* Action Button */}
                 <td className="p-4 text-right whitespace-nowrap">
                   <button
                     type="button"

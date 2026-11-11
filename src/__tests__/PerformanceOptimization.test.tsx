@@ -9,10 +9,7 @@ describe('PerformanceOptimization Component — Acceptance Criteria & NFRs', () 
     vi.clearAllMocks();
   });
 
-  // ==========================================
-  // 1. HAPPY PATH (Agile User Stories)
-  // ==========================================
-  describe('1. Happy Path — Core Functionality & Responsiveness', () => {
+  describe('Core Functionality & Responsiveness', () => {
     it('renders the Performance Optimization header and metric cards clearly', () => {
       render(<PerformanceOptimization />);
 
@@ -136,10 +133,7 @@ describe('PerformanceOptimization Component — Acceptance Criteria & NFRs', () 
     });
   });
 
-  // ==========================================
-  // 2. UNHAPPY PATH (Edge Case Handling)
-  // ==========================================
-  describe('2. Unhappy Path — Edge Cases & Resilience', () => {
+  describe('Edge Cases & Resilience', () => {
     it('displays a friendly "No data found" empty state when search returns zero results', async () => {
       render(<PerformanceOptimization />);
       const searchInput = screen.getByRole('searchbox', { name: /search performance records/i });
@@ -234,10 +228,7 @@ describe('PerformanceOptimization Component — Acceptance Criteria & NFRs', () 
     });
   });
 
-  // ==========================================
-  // 3. NON-FUNCTIONAL REQUIREMENTS (NFRs)
-  // ==========================================
-  describe('3. Non-Functional Requirements — a11y, Telemetry & Security', () => {
+  describe('Accessibility, Telemetry & Security', () => {
     it('achieves accessibility standards with proper ARIA attributes and keyboard navigable roles', () => {
       render(<PerformanceOptimization />);
 

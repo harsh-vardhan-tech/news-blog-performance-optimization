@@ -23,7 +23,6 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
       className="bg-white border border-zinc-200 p-4 space-y-4"
     >
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        {/* Search Input Box */}
         <div className="relative flex-1">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-4 w-4 text-zinc-400" aria-hidden="true" />
@@ -39,7 +38,6 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
           />
         </div>
 
-        {/* Action Button: Add New Record */}
         <button
           type="button"
           onClick={onOpenAddModal}
@@ -51,9 +49,7 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
         </button>
       </div>
 
-      {/* Filter and Sort Dropdowns */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 border-t border-zinc-100">
-        {/* Category Filter */}
         <div className="flex flex-col">
           <label htmlFor="filter-category" className="text-xs font-semibold text-zinc-600 mb-1 flex items-center gap-1">
             <Filter className="w-3 h-3 text-zinc-500" />
@@ -76,7 +72,6 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
           </select>
         </div>
 
-        {/* Status Filter */}
         <div className="flex flex-col">
           <label htmlFor="filter-status" className="text-xs font-semibold text-zinc-600 mb-1">
             Status
@@ -96,7 +91,6 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
           </select>
         </div>
 
-        {/* Sort By Field */}
         <div className="flex flex-col">
           <label htmlFor="sort-records-by" className="text-xs font-semibold text-zinc-600 mb-1 flex items-center gap-1">
             <ArrowUpDown className="w-3 h-3 text-zinc-500" />
@@ -118,7 +112,6 @@ export const FilterBar: React.FC<FilterBarProps> = React.memo(({
           </select>
         </div>
 
-        {/* Sort Order Direction */}
         <div className="flex flex-col">
           <label htmlFor="sort-direction" className="text-xs font-semibold text-zinc-600 mb-1">
             Sort Direction

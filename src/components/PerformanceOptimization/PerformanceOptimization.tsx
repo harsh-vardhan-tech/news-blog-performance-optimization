@@ -23,20 +23,15 @@ const INITIAL_FILTERS: OptimizationFilterCriteria = {
 };
 
 export const PerformanceOptimization: React.FC = () => {
-  // Primary state management
   const [items, setItems] = useState<PerformanceItem[]>(INITIAL_PERFORMANCE_ITEMS);
   const [filters, setFilters] = useState<OptimizationFilterCriteria>(INITIAL_FILTERS);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [optimizingId, setOptimizingId] = useState<string | null>(null);
 
-  // Network simulation states
   const [isThrottled, setIsThrottled] = useState(false);
   const [isAsyncLoading, setIsAsyncLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
-  // ============================================================
-  // REACT PERFORMANCE: useMemo for Heavy Metric Computations
-  // ============================================================
   const computedMetrics = useMemo(() => {
     if (items.length === 0) {
       return {
@@ -63,26 +58,19 @@ export const PerformanceOptimization: React.FC = () => {
     };
   }, [items]);
 
-  // ============================================================
-  // REACT PERFORMANCE: useMemo for Filtered & Sorted Records
-  // ============================================================
   const filteredAndSortedItems = useMemo(() => {
     const { searchTerm, category, status, sortBy, sortOrder } = filters;
     const normalizedQuery = searchTerm.toLowerCase().trim();
 
     return items
       .filter((item) => {
-        // Search filter: title, slug, or notes
         const matchesSearch =
           !normalizedQuery ||
           item.title.toLowerCase().includes(normalizedQuery) ||
           item.slug.toLowerCase().includes(normalizedQuery) ||
           item.notes.toLowerCase().includes(normalizedQuery);
 
-        // Category filter
         const matchesCategory = category === 'All' || item.category === category;
-
-        // Status filter
         const matchesStatus = status === 'All' || item.status === status;
 
         return matchesSearch && matchesCategory && matchesStatus;
@@ -103,11 +91,6 @@ export const PerformanceOptimization: React.FC = () => {
       });
   }, [items, filters]);
 
-  // ============================================================
-  // REACT PERFORMANCE: useCallback for Stabilized Event Handlers
-  // ============================================================
-
-  // Filter & Search handler
   const handleFilterChange = useCallback(<K extends keyof OptimizationFilterCriteria>(
     key: K,
     value: OptimizationFilterCriteria[K]
@@ -123,13 +106,11 @@ export const PerformanceOptimization: React.FC = () => {
     }
   }, []);
 
-  // Reset all filters
   const handleResetFilters = useCallback(() => {
     setFilters(INITIAL_FILTERS);
     logTelemetry('Reset Filters');
   }, []);
 
-  // Network 3G Throttling Simulation Toggle
   const handleToggleThrottle = useCallback(() => {
     setIsThrottled((prev) => {
       const nextState = !prev;
@@ -138,7 +119,6 @@ export const PerformanceOptimization: React.FC = () => {
     });
   }, []);
 
-  // Instant Single Article Optimization
   const handleOptimizeItem = useCallback((itemId: string) => {
     const targetItem = items.find((i) => i.id === itemId);
     if (!targetItem) return;
@@ -161,7 +141,7 @@ export const PerformanceOptimization: React.FC = () => {
               edgeCacheHitRate: Math.min(99.4, Number((item.edgeCacheHitRate + 25).toFixed(1))),
               compressionActive: true,
               lastAuditedAt: new Date().toISOString(),
-              notes: 'Instant asset minification and Brotli compression applied successfully.',
+              notes: 'Asset minification and Brotli compression applied.',
             };
           }
           return item;
@@ -171,7 +151,6 @@ export const PerformanceOptimization: React.FC = () => {
     }, delay);
   }, [items, isThrottled]);
 
-  // Batch CDN Purge and Global Audit
   const handleTriggerBatchPurge = useCallback(() => {
     setIsAsyncLoading(true);
     setLoadingProgress(10);
@@ -206,7 +185,6 @@ export const PerformanceOptimization: React.FC = () => {
     }, intervalTime);
   }, [isThrottled]);
 
-  // Submission of new audit record
   const handleAddNewAudit = useCallback((payload: NewPerformanceItemPayload) => {
     const newItem: PerformanceItem = {
       id: `perf-${Date.now()}`,
@@ -222,7 +200,7 @@ export const PerformanceOptimization: React.FC = () => {
       status: payload.ttfbMs > 400 ? 'Needs Optimization' : 'Optimized',
       lastAuditedAt: new Date().toISOString(),
       compressionActive: true,
-      notes: payload.notes || 'Manually logged by floor staff.',
+      notes: payload.notes || 'Logged by floor staff.',
     };
 
     setItems((prev) => [newItem, ...prev]);
@@ -234,7 +212,6 @@ export const PerformanceOptimization: React.FC = () => {
       className="min-h-screen bg-zinc-50 text-zinc-900 pb-16 font-sans antialiased"
       role="main"
     >
-      {/* Top Corporate Navigation Bar */}
       <header className="border-b border-zinc-200 bg-white sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="flex items-center space-x-3">
@@ -265,9 +242,7 @@ export const PerformanceOptimization: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Content Container (Consistent 16px / 32px padding steps) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Section 1: KPI Metrics Overview */}
         <MetricsOverview
           averageTtfb={computedMetrics.averageTtfb}
           averageLcp={computedMetrics.averageLcp}
@@ -277,7 +252,6 @@ export const PerformanceOptimization: React.FC = () => {
           optimizedCount={computedMetrics.optimizedCount}
         />
 
-        {/* Section 2: Connectivity & 3G Simulation Bar */}
         <ConnectivityBar
           isThrottled={isThrottled}
           onToggleThrottle={handleToggleThrottle}
@@ -286,14 +260,12 @@ export const PerformanceOptimization: React.FC = () => {
           onTriggerBatchPurge={handleTriggerBatchPurge}
         />
 
-        {/* Section 3: Filter & Search Controls */}
         <FilterBar
           filters={filters}
           onFilterChange={handleFilterChange}
           onOpenAddModal={() => setIsModalOpen(true)}
         />
 
-        {/* Section 4: Data Table or Empty State */}
         <section aria-label="Performance Audit Records Listing">
           {filteredAndSortedItems.length === 0 ? (
             <EmptyState onReset={handleResetFilters} />
@@ -306,19 +278,17 @@ export const PerformanceOptimization: React.FC = () => {
           )}
         </section>
 
-        {/* Footer Meta */}
         <footer className="pt-8 border-t border-zinc-200 text-xs text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2">
             <ShieldCheck className="w-4 h-4 text-zinc-700" aria-hidden="true" />
-            <span>Monochromatic Corporate Design System • Strict XSS Sanitization Active</span>
+            <span>News Blog Internal Infrastructure • Performance Console</span>
           </div>
           <div>
-            <span>Targeting 100% Lighthouse a11y • React Performance Optimized</span>
+            <span>Targeting 100% Lighthouse a11y Compliance</span>
           </div>
         </footer>
       </div>
 
-      {/* Modal for adding audit records */}
       <AddAuditModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

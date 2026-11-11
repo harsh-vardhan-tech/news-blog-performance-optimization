@@ -23,7 +23,6 @@ export const ConnectivityBar: React.FC<ConnectivityBarProps> = React.memo(({
       className="bg-white border border-zinc-200 p-4"
     >
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        {/* Left: Network simulation toggles */}
         <div className="flex items-center space-x-4">
           <label className="flex items-center space-x-3 cursor-pointer select-none">
             <input
@@ -48,7 +47,6 @@ export const ConnectivityBar: React.FC<ConnectivityBarProps> = React.memo(({
           </span>
         </div>
 
-        {/* Right: Batch Action Button */}
         <div className="flex items-center space-x-3">
           <button
             type="button"
@@ -72,7 +70,6 @@ export const ConnectivityBar: React.FC<ConnectivityBarProps> = React.memo(({
         </div>
       </div>
 
-      {/* Visual Loading Indicator / Progress Bar */}
       {isLoading && (
         <div className="mt-4 pt-3 border-t border-zinc-200" aria-live="polite">
           <div className="flex justify-between text-xs text-zinc-600 mb-1.5">

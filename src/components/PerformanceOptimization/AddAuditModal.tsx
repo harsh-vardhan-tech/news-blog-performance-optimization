@@ -40,7 +40,6 @@ export const AddAuditModal: React.FC<AddAuditModalProps> = React.memo(({
     }
   }, [hasAttemptedSubmit]);
 
-  // Comprehensive validation strictly fulfilling Unhappy Path requirements
   const validateForm = useCallback((): boolean => {
     const newErrors: FormValidationErrors = {};
 
@@ -71,7 +70,6 @@ export const AddAuditModal: React.FC<AddAuditModalProps> = React.memo(({
     setHasAttemptedSubmit(true);
 
     if (validateForm()) {
-      // Security NFR: Strictly sanitize all textual inputs before persisting in state
       onSubmit({
         title: sanitizeInput(formData.title),
         slug: sanitizeInput(formData.slug),
